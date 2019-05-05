@@ -100,14 +100,18 @@ typedef struct
 // ?
 typedef struct
 {
-	int   kind;    // ?
+	int   kind;     // TIDENT, TKEYWORD etc
+
 	File *file;
 	int   line;
 	int   column;
+
 	bool  space;    // ? true if the token has a leading space
 	bool  bol;      // ? true if the token is at the beginning of a line
+
 	int   count;    // ? token number in a file, counting from 0.
 	Set  *hideset;  // ? used by the preprocessor for macro expansion
+
 	union
 	{
 		// TKEYWORD
@@ -116,9 +120,9 @@ typedef struct
 		// TSTRING or TCHAR
 		struct
 		{
-			char *sval;   // ?
+			char *sval;      // ?
 			int   slen;
-			int   c;      // ?
+			int   c;         // ?
 			int   enc;
 		};
 

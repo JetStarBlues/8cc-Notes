@@ -1,14 +1,14 @@
+//#include <sys/types.h>
+//#include <unistd.h>
 #include <errno.h>     // errno
 #include <stdlib.h>    // calloc
 #include <stdio.h>     // fileno, getc, ungetc, EOF
 #include <string.h>    // strerror
 #include <sys/stat.h>  // fstat, stat type?
 #include <assert.h>    // assert
-//#include <sys/types.h>
-//#include <unistd.h>
-#include "8cc.h"  // Vector type, EMPTY_VECTOR, vec_tail, vec_len, vec_pop
-                  // File type
-                  // error
+#include "8cc.h"       // Vector type, EMPTY_VECTOR, vec_tail, vec_len, vec_pop
+                       //  File type
+                       //  error
 
 static Vector *files   = &EMPTY_VECTOR;
 static Vector *stashed = &EMPTY_VECTOR;  // ?
@@ -242,11 +242,11 @@ char *input_position ()
 	return format( "%s:%d:%d", f->name, f->line, f->column );
 }
 
-void stream_stash ( File *f )
+void stream_stash ( File *f )  // ?
 {
-	vec_push( stashed, files );
+	vec_push( stashed, files );  // save current then
 
-	files = make_vector1( f );  // ?
+	files = make_vector1( f );  // ? make new vector with 'f' as first element
 }
 
 void stream_unstash ()
